@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() { 
-  int i;
+  int i = 1;
   if ( i != 0 ) {
   printf( "i ist nicht 0.\n" );
   }
