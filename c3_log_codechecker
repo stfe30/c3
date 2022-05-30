@@ -1,0 +1,72 @@
+user@notebook:~/c3$ CodeChecker check -b make -o ./reportcc
+[INFO 2022-04-22 13:51] - Starting build...
+[INFO 2022-04-22 13:51] - Using CodeChecker ld-logger.
+gcc -o c1make c3.c
+[INFO 2022-04-22 13:51] - Build finished successfully.
+[INFO 2022-04-22 13:51] - Enabled checkers:
+clang-tidy: bugprone-assert-side-effect, bugprone-bool-pointer-implicit-conversion, bugprone-copy-constructor-init, bugprone-dangling-handle, bugprone-dynamic-static-initializers, bugprone-fold-init-type, bugprone-forward-declaration-namespace, bugprone-forwarding-reference-overload, bugprone-inaccurate-erase, bugprone-incorrect-roundings, bugprone-infinite-loop, bugprone-integer-division, bugprone-lambda-function-name, bugprone-macro-repeated-side-effects, bugprone-misplaced-operator-in-strlen-in-alloc, bugprone-misplaced-widening-cast, bugprone-move-forwarding-reference, bugprone-not-null-terminated-result, bugprone-signed-char-misuse, bugprone-sizeof-container, bugprone-sizeof-expression, bugprone-string-constructor, bugprone-string-literal-with-embedded-nul, bugprone-suspicious-enum-usage, bugprone-suspicious-memset-usage, bugprone-suspicious-missing-comma, bugprone-suspicious-semicolon, bugprone-swapped-arguments, bugprone-terminating-continue, bugprone-throw-keyword-missing, bugprone-too-small-loop-variable, bugprone-undefined-memory-manipulation, bugprone-undelegated-constructor, bugprone-unused-raii, bugprone-unused-return-value, bugprone-use-after-move, bugprone-virtual-near-miss, cert-dcl54-cpp, cert-dcl58-cpp, cert-dcl59-cpp, cert-err09-cpp, cert-fio38-c, cert-mem57-cpp, cert-oop11-cpp, cert-oop58-cpp, cert-pos44-c, cppcoreguidelines-special-member-functions, google-build-namespaces, google-global-names-in-headers, misc-definitions-in-headers, misc-misplaced-const, misc-redundant-expression, misc-unconventional-assign-operator, misc-uniqueptr-reset-release, performance-inefficient-algorithm, performance-move-const-arg, performance-move-constructor-init, performance-no-automatic-move, performance-noexcept-move-constructor, performance-trivially-destructible
+clangsa: alpha.cplusplus.PlacementNew, core.CallAndMessage, core.DivideZero, core.DynamicTypePropagation, core.NonNullParamChecker, core.NullDereference, core.StackAddressEscape, core.UndefinedBinaryOperatorResult, core.VLASize, core.uninitialized.ArraySubscript, core.uninitialized.Assign, core.uninitialized.Branch, core.uninitialized.CapturedBlockVariable, core.uninitialized.UndefReturn, cplusplus.InnerPointer, cplusplus.Move, cplusplus.NewDelete, cplusplus.NewDeleteLeaks, cplusplus.PureVirtualCall, deadcode.DeadStores, nullability.NullPassedToNonnull, nullability.NullReturnedFromNonnull, optin.cplusplus.UninitializedObject, optin.cplusplus.VirtualCall, optin.portability.UnixAPI, security.FloatLoopCounter, security.insecureAPI.UncheckedReturn, security.insecureAPI.getpw, security.insecureAPI.gets, security.insecureAPI.mkstemp, security.insecureAPI.mktemp, security.insecureAPI.rand, security.insecureAPI.vfork, unix.API, unix.Malloc, unix.MallocSizeof, unix.MismatchedDeallocator, unix.Vfork, unix.cstring.BadSizeArg, unix.cstring.NullArg, valist.CopyToSelf, valist.Uninitialized, valist.Unterminated
+[INFO 2022-04-22 13:51] - Starting static analysis ...
+[INFO 2022-04-22 13:51] - [1/2] clang-tidy analyzed c3.c successfully.
+[WARNING 2022-04-22 13:51] - Previous analysis results in '/home/user/c3/reportcc/c3.c_clang-tidy_9a6e03a29f8c955ed6c4efeea3c7be1d.plist' has been overwritten.
+[INFO 2022-04-22 13:51] - [2/2] clangsa analyzed c3.c successfully.
+[WARNING 2022-04-22 13:51] - Previous analysis results in '/home/user/c3/reportcc/c3.c_clangsa_9a6e03a29f8c955ed6c4efeea3c7be1d.plist' has been overwritten.
+[INFO 2022-04-22 13:51] - ----==== Summary ====----
+[INFO 2022-04-22 13:51] - Successfully analyzed
+[INFO 2022-04-22 13:51] -   clang-tidy: 1
+[INFO 2022-04-22 13:51] -   clangsa: 1
+[INFO 2022-04-22 13:51] - Reanalyzed compilation commands: 2
+[INFO 2022-04-22 13:51] - Total analyzed compilation commands: 1
+[INFO 2022-04-22 13:51] - ----=================----
+[INFO 2022-04-22 13:51] - Analysis finished.
+[INFO 2022-04-22 13:51] - To view results in the terminal use the "CodeChecker parse" command.
+[INFO 2022-04-22 13:51] - To store results use the "CodeChecker store" command.
+[INFO 2022-04-22 13:51] - See --help and the user guide for further options about parsing and storing the reports.
+[INFO 2022-04-22 13:51] - ----=================----
+[INFO 2022-04-22 13:51] - Analysis length: 0.05174541473388672 sec.
+[HIGH] /home/user/c3/c3.c:6:10: The left operand of '!=' is a garbage value [core.UndefinedBinaryOperatorResult]
+  if ( i != 0 ) {
+         ^
+
+Found 1 defect(s) in c3.c
+
+[MEDIUM] /home/user/c3/c3.c:6:8: variable 'i' is uninitialized when used here [clang-diagnostic-uninitialized]
+  if ( i != 0 ) {
+       ^
+
+Found 1 defect(s) in c3.c
+
+
+----==== Severity Statistics ====----
+----------------------------
+Severity | Number of reports
+----------------------------
+HIGH     |                 1
+MEDIUM   |                 1
+----------------------------
+----=================----
+
+----==== Checker Statistics ====----
+-----------------------------------------------------------------
+Checker name                       | Severity | Number of reports
+-----------------------------------------------------------------
+core.UndefinedBinaryOperatorResult | HIGH     |                 1
+clang-diagnostic-uninitialized     | MEDIUM   |                 1
+-----------------------------------------------------------------
+----=================----
+
+----==== File Statistics ====----
+-----------------------------
+File name | Number of reports
+-----------------------------
+c3.c      |                 2
+-----------------------------
+----=================----
+
+----======== Summary ========----
+---------------------------------------------
+Number of processed analyzer result files | 2
+Number of analyzer reports                | 2
+---------------------------------------------
+----=================----
+

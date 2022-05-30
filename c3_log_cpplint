@@ -1,0 +1,8 @@
+user@notebook:~/c3$ cpplint c3.c
+c3.c:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+c3.c:4:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+c3.c:7:  Extra space after ( in function call  [whitespace/parens] [4]
+c3.c:7:  Extra space before )  [whitespace/parens] [2]
+Done processing c3.c
+Total errors found: 4
+
